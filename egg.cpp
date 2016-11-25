@@ -119,7 +119,7 @@ float Egg::normalVectorCoordinateY(float u, float v)
 	float _zu = zu(u, v);
 	float _zv = zv(u, v);
 
-	float result = (GLfloat)(_zu * _xv - _xu * _zv);
+	float result = (GLfloat) (_zu * _xv - _xu * _zv);
 	return result;
 
 }
@@ -129,19 +129,19 @@ float Egg::normalVectorCoordinateZ(float u, float v)
 
 	float _yu = yu(u);
 	float _yv = yv(v);
-	float _zu = zu(u, v);
-	float _zv = zv(u, v);
+	float _xu = xu(u, v);
+	float _xv = xv(u, v);
 
-	float result = (GLfloat) (_yu * _zv - _zu * _yv);
+	float result = (GLfloat) (_xu *_yv - _yu * _xv);
 	return result;
 
 }
 
 void Egg::vector4SideFront(int i, int j, float x, float y, float z)
 {
-	normalVector[i][j][0] = x / sqrt(x * x + y * y + z * z);
-	normalVector[i][j][1] = y / sqrt(x * x + y * y + z * z);
-	normalVector[i][j][2] = z / sqrt(x * x + y * y + z * z);
+	normalVector[i][j][0] = x / (float) sqrt(x * x + y * y + z * z);
+	normalVector[i][j][1] = y / (float) sqrt(x * x + y * y + z * z);
+	normalVector[i][j][2] = z / (float) sqrt(x * x + y * y + z * z);
 }
 
 void Egg::vector4SideBack(int i, int j, float x, float y, float z)
@@ -155,16 +155,16 @@ void Egg::vector4SideBack(int i, int j, float x, float y, float z)
 
 void Egg::vector4Top(int i, int j, float x, float y, float z)
 {
-	normalVector[i][j][0] = 0;
-	normalVector[i][j][1] = 0;
-	normalVector[i][j][2] = 0;
+	normalVector[i][j][0] = 0.0f;
+	normalVector[i][j][1] = 1.0f;
+	normalVector[i][j][2] = 0.0f;
 }
 
 void Egg::vector4Bottom(int i, int j, float x, float y, float z)
 {
-	normalVector[i][j][0] = 0;
-	normalVector[i][j][1] = -1;
-	normalVector[i][j][2] = 0;
+	normalVector[i][j][0] = 0.0f;
+	normalVector[i][j][1] = -1.0f;
+	normalVector[i][j][2] = 0.0f;
 }
 
 void Egg::generateNormalVector()
@@ -182,13 +182,13 @@ void Egg::generateNormalVector()
 			float y = normalVectorCoordinateY(u, v);
 			float z = normalVectorCoordinateZ(u, v);
 
-			/*if (j == n / 2) {
+			if (i == n / 2) {
 				vector4Top(i, j, x, y, z);
 			}
-			else if (j == n / 2) {
+			else if (i == n - 1 || i == 0) {
 				vector4Bottom(i, j, x, y, z);
 			}
-			else */ if (i <= n / 2) {
+			else if (i <= n / 2) {
 				vector4SideFront(i, j, x, y, z);
 			}
 			else {
