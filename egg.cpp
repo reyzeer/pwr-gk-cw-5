@@ -316,6 +316,7 @@ void Egg::insertVertexWithColor(int i, int j)
     if (colorAvailable) {
         glColor3fv(colors[i][j]);
     }
+	glNormal3fv(normalVector[i][j]);
 	glVertex3fv(matrix[i][j]);
 }
 
