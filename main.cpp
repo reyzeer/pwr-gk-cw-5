@@ -212,9 +212,91 @@ void keys(unsigned char key, int x, int y)
 /// Funkcja ustalająca stan renderowania
 void MyInit(void)
 {
-
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+~
+    //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     // Kolor czyszcący (wypełnienia okna) ustawiono na czarny
+
+    /*************************************************************************************/
+    //  Definicja materiału z jakiego zrobiony jest czajnik
+    //  i definicja źródła światła
+    /*************************************************************************************/
+
+    /*************************************************************************************/
+    // Definicja materiału z jakiego zrobiony jest czajnik
+
+        GLfloat mat_ambient[]  = {1.0, 1.0, 1.0, 1.0};
+        // współczynniki ka =[kar,kag,kab] dla światła otoczenia
+
+        GLfloat mat_diffuse[]  = {1.0, 1.0, 1.0, 1.0};
+        // współczynniki kd =[kdr,kdg,kdb] światła rozproszonego
+
+        GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
+        // współczynniki ks =[ksr,ksg,ksb] dla światła odbitego
+
+        GLfloat mat_shininess  = {20.0};
+        // współczynnik n opisujący połysk powierzchni
+
+    /*************************************************************************************/
+    // Definicja źródła światła
+
+        GLfloat light_position[] = {0.0, 0.0, 10.0, 1.0};
+        // położenie źródła
+
+        GLfloat light_ambient[] = {0.1, 0.1, 0.1, 1.0};
+        // składowe intensywności świecenia źródła światła otoczenia
+        // Ia = [Iar,Iag,Iab]
+
+        GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
+        // składowe intensywności świecenia źródła światła powodującego
+        // odbicie dyfuzyjne Id = [Idr,Idg,Idb]
+
+        GLfloat light_specular[]= {1.0, 1.0, 1.0, 1.0};
+        // składowe intensywności świecenia źródła światła powodującego
+        // odbicie kierunkowe Is = [Isr,Isg,Isb]
+
+        GLfloat att_constant  = {1.0};
+        // składowa stała ds dla modelu zmian oświetlenia w funkcji
+        // odległości od źródła
+
+        GLfloat att_linear    = {0.05};
+        // składowa liniowa dl dla modelu zmian oświetlenia w funkcji
+        // odległości od źródła
+
+        GLfloat att_quadratic  = {0.001};
+        // składowa kwadratowa dq dla modelu zmian oświetlenia w funkcji
+        // odległości od źródła
+
+    /*************************************************************************************/
+    // Ustawienie parametrów materiału i źródła światła
+    /*************************************************************************************/
+    // Ustawienie patrametrów materiału
+
+        glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+        glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);
+
+    /*************************************************************************************/
+    // Ustawienie parametrów źródła
+
+        glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+        glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+        glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
+        glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, att_constant);
+        glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, att_linear);
+        glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, att_quadratic);
+
+    /*************************************************************************************/
+    // Ustawienie opcji systemu oświetlania sceny
+
+        glShadeModel(GL_SMOOTH); // właczenie łagodnego cieniowania
+        glEnable(GL_LIGHTING);   // właczenie systemu oświetlenia sceny
+        glEnable(GL_LIGHT0);     // włączenie źródła o numerze 0
+        glEnable(GL_DEPTH_TEST); // włączenie mechanizmu z-bufora
+
+    /*************************************************************************************/
 
 }
 
