@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70e69c2b-66b3-469c-a54a-6525df7cdf1c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egg.cpp" afterPath="$PROJECT_DIR$/egg.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egg.h" afterPath="$PROJECT_DIR$/egg.h" />
     </list>
@@ -88,8 +89,8 @@
           <file leaf-file-name="egg.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/egg.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="524">
-                  <caret line="41" column="33" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="33" />
+                <state relative-caret-position="612">
+                  <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -102,14 +103,14 @@
           <file leaf-file-name="egg.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/egg.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="436">
-                  <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+                <state relative-caret-position="819">
+                  <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
                   <folding>
                     <element signature="e#336#472#0" expanded="false" />
                     <element signature="e#474#569#0" expanded="false" />
                     <element signature="e#571#707#0" expanded="false" />
                     <element signature="e#709#1018#0" expanded="false" />
-                    <element signature="e#1707#2450#0" expanded="false" />
+                    <element signature="e#3117#3860#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -132,8 +133,8 @@
         <option value="$PROJECT_DIR$/rdraw.h" />
         <option value="$PROJECT_DIR$/common.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/egg.cpp" />
         <option value="$PROJECT_DIR$/egg.h" />
+        <option value="$PROJECT_DIR$/egg.cpp" />
       </list>
     </option>
   </component>
@@ -371,12 +372,12 @@
       <workItem from="1480019476165" duration="570000" />
       <workItem from="1480066485841" duration="167000" />
       <workItem from="1480066987155" duration="183000" />
-      <workItem from="1480067387138" duration="2029000" />
+      <workItem from="1480067387138" duration="3185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12696000" />
+    <option name="totallyTimeSpent" value="13852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
@@ -435,7 +436,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -497,7 +498,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,7 +560,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -621,7 +622,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -683,7 +684,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -850,22 +851,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/egg.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="41" column="33" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="33" />
+        <state relative-caret-position="612">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/egg.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="819">
+          <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
           <folding>
             <element signature="e#336#472#0" expanded="false" />
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#1707#2450#0" expanded="false" />
+            <element signature="e#3117#3860#0" expanded="false" />
           </folding>
         </state>
       </provider>

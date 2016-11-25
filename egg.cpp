@@ -20,7 +20,7 @@ void Egg::prepareMatrix()
 
 float Egg::x(float u, float v)
 {
-	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * cos(pi*v);
+	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * cos(PI*v);
 }
 
 float Egg::y(float u, float v)
@@ -30,7 +30,7 @@ float Egg::y(float u, float v)
 
 float Egg::z(float u, float v)
 {
-	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * sin(pi*v);
+	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * sin(PI*v);
 }
 
 void Egg::transform2Egg()
@@ -63,7 +63,79 @@ void Egg::prepareNormalVector()
 
 }
 
+float Egg::xu(float u, float v)
+{
+	float result = (-450 * pow(u, 4) + 900 * pow(u, 3) - 810 * pow(u, 2) + 360 * u - 45) * cos(v * PI);
+	return result;
+}
 
+float Egg::xv(float u, float v)
+{
+	float result = PI * (90 * pow(u, 5) - 225 * pow(u, 4) + 270 * pow(u, 3) - 180 * pow(u, 2) + 45 * u) * sin(v * PI);
+	return result;
+}
+
+float Egg::yu(float u)
+{
+	float result = 640 * pow(u, 3) - 960 * pow(u, 2) + 320 * u;
+	return result;
+}
+
+float Egg::yv(float v)
+{
+	return 0;
+}
+
+float Egg::zu(float u, float v)
+{
+	float result = (-450 * pow(u, 4) + 900 * pow(u, 3) - 810 * pow(u, 2) + 360 * u - 45) * sin(v * PI);
+	return result;
+}
+
+float Egg::zv(float u, float v)
+{
+	float result = -PI*(90 * pow(u, 5) - 225 * pow(u, 4) + 270 * pow(u, 3) - 180 * pow(u, 2) + 45 * u) * cos(v * PI);
+	return result;
+}
+
+float Egg::normalVectorCoordinateX(float u, float v)
+{
+
+	float yu = yu(u);
+	float yv = yv(v);
+	float zu = zu(u, v);
+	float zv = zv(u, v);
+
+	float result = (GLfloat) (yu * zv - zu * yv);
+	return result;
+
+}
+
+float Egg::normalVectorCoordinateY(float u, float v)
+{
+
+	float xu = xu(u, v);
+	float xv = xv(u, v);
+	float zu = zu(u, v);
+	float zv = zv(u, v);
+
+	float result = (GLfloat)(zu * xv - xu * zv);
+	return result;
+
+}
+
+float Egg::normalVectorCoordinateZ(float u, float v)
+{
+
+	float yu = yu(u);
+	float yv = yv(v);
+	float zu = zu(u, v);
+	float zv = zv(u, v);
+
+	float result = (GLfloat) (yu * zv - zu * yv);
+	return result;
+
+}
 
 void Egg::generateNormalVector()
 {

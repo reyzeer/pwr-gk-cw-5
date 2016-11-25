@@ -5,7 +5,7 @@
 
 #include "common.h"
 
-const float pi = 3.14159265359;
+const float PI = 3.14159265359;
 
 class Egg
 {
@@ -39,9 +39,18 @@ private:
 
     void generateNormalVector();
 
-    float normalVectorCoordinateX();
-    float normalVectorCoordinateY();
-    float normalVectorCoordinateZ();
+    float xu(float u, float v);
+    float xv(float u, float v);
+
+    float yu(float u);
+    float yv(float v);
+
+    float zu(float u, float v);
+    float zv(float u, float v);
+
+    float normalVectorCoordinateX(float u, float v);
+    float normalVectorCoordinateY(float u, float v);
+    float normalVectorCoordinateZ(float u, float v);
 
 public:
 
