@@ -101,12 +101,12 @@ float Egg::zv(float u, float v)
 float Egg::normalVectorCoordinateX(float u, float v)
 {
 
-	float yu = yu(u);
-	float yv = yv(v);
-	float zu = zu(u, v);
-	float zv = zv(u, v);
+	float _yu = yu(u);
+	float _yv = yv(v);
+	float _zu = zu(u, v);
+	float _zv = zv(u, v);
 
-	float result = (GLfloat) (yu * zv - zu * yv);
+	float result = (GLfloat) (_yu * _zv - _zu * _yv);
 	return result;
 
 }
@@ -114,12 +114,12 @@ float Egg::normalVectorCoordinateX(float u, float v)
 float Egg::normalVectorCoordinateY(float u, float v)
 {
 
-	float xu = xu(u, v);
-	float xv = xv(u, v);
-	float zu = zu(u, v);
-	float zv = zv(u, v);
+	float _xu = xu(u, v);
+	float _xv = xv(u, v);
+	float _zu = zu(u, v);
+	float _zv = zv(u, v);
 
-	float result = (GLfloat)(zu * xv - xu * zv);
+	float result = (GLfloat)(_zu * _xv - _xu * _zv);
 	return result;
 
 }
@@ -127,12 +127,12 @@ float Egg::normalVectorCoordinateY(float u, float v)
 float Egg::normalVectorCoordinateZ(float u, float v)
 {
 
-	float yu = yu(u);
-	float yv = yv(v);
-	float zu = zu(u, v);
-	float zv = zv(u, v);
+	float _yu = yu(u);
+	float _yv = yv(v);
+	float _zu = zu(u, v);
+	float _zv = zv(u, v);
 
-	float result = (GLfloat) (yu * zv - zu * yv);
+	float result = (GLfloat) (_yu * _zv - _zu * _yv);
 	return result;
 
 }
