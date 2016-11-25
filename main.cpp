@@ -246,7 +246,7 @@ void MyInit(void)
         // składowe intensywności świecenia źródła światła otoczenia
         // Ia = [Iar,Iag,Iab]
 
-        GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
+        GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
         // składowe intensywności świecenia źródła światła powodującego
         // odbicie dyfuzyjne Id = [Idr,Idg,Idb]
 

@@ -20,7 +20,7 @@ void Egg::prepareMatrix()
 
 float Egg::x(float u, float v)
 {
-	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * cos(PI*v);
+	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * cos(PI * v);
 }
 
 float Egg::y(float u, float v)
@@ -137,11 +137,20 @@ float Egg::normalVectorCoordinateZ(float u, float v)
 
 }
 
-void Egg::vector4Side(int i, int j, float x, float y, float z)
+void Egg::vector4SideFront(int i, int j, float x, float y, float z)
 {
 	normalVector[i][j][0] = x / sqrt(x * x + y * y + z * z);
 	normalVector[i][j][1] = y / sqrt(x * x + y * y + z * z);
 	normalVector[i][j][2] = z / sqrt(x * x + y * y + z * z);
+}
+
+void Egg::vector4SideBack(int i, int j, float x, float y, float z)
+{
+	vector4SideFront(i, j, x, y, z);
+	normalVector[i][j][0] *= -1.0f;
+	normalVector[i][j][1] *= -1.0f;
+	normalVector[i][j][2] *= -1.0f;
+
 }
 
 void Egg::vector4Top(int i, int j, float x, float y, float z)
@@ -166,29 +175,24 @@ void Egg::generateNormalVector()
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 
-			float u = distance * matrix[i][j][0];
-			float v = distance * matrix[i][j][1];
+			float u = distance * i;
+			float v = distance * j;
 
 			float x = normalVectorCoordinateX(u, v);
 			float y = normalVectorCoordinateY(u, v);
 			float z = normalVectorCoordinateZ(u, v);
 
-			vector4Side(i, j, x, y, z);
-			/*
-			if (i < n / 2) {
-				vector4Side(i, j, x, y, z);
-			}
-
-			if (i > n / 2) {
-				vector4Side(i, j, x * -1.0, y * -1.0, z * -1.0);
-			}*/
-
-			if (i == n / 2) {
+			/*if (j == n / 2) {
 				vector4Top(i, j, x, y, z);
 			}
-
-			if (i == n / 2) {
+			else if (j == n / 2) {
 				vector4Bottom(i, j, x, y, z);
+			}
+			else */ if (i <= n / 2) {
+				vector4SideFront(i, j, x, y, z);
+			}
+			else {
+				vector4SideBack(i, j, x, y, z);
 			}
 
 		}
@@ -318,6 +322,9 @@ void Egg::insertVertexWithColor(int i, int j)
     if (colorAvailable) {
         glColor3fv(colors[i][j]);
     }
+	else {
+		glColor3f(1.0f, 1.0f, 1.0f);
+	}
 	glNormal3fv(normalVector[i][j]);
 	glVertex3fv(matrix[i][j]);
 }

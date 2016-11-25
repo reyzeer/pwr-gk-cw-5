@@ -61,7 +61,16 @@ private:
     /// \param x normal vectro coordinate x
     /// \param y normal vectro coordinate y
     /// \param z normal vectro coordinate z
-    void vector4Side(int i, int j, float x, float y, float z);
+    void vector4SideFront(int i, int j, float x, float y, float z);
+
+    /// Vector for side of egg
+    ///
+    /// \param i Row in matrix
+    /// \param j Col in matrix
+    /// \param x normal vectro coordinate x
+    /// \param y normal vectro coordinate y
+    /// \param z normal vectro coordinate z
+    void vector4SideBack(int i, int j, float x, float y, float z);
 
     /// Vector for top of egg
     ///
