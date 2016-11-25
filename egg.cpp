@@ -168,7 +168,9 @@ void Egg::drawLines()
 
 void Egg::insertVertexWithColor(int i, int j)
 {
-	glColor3fv(colors[i][j]);
+    if (colorAvailable) {
+        glColor3fv(colors[i][j]);
+    }
 	glVertex3fv(matrix[i][j]);
 }
 
@@ -228,8 +230,10 @@ void Egg::draw()
 		prepareMatrix();
 		transform2Egg();
 
-		randColors();
-		deleteSeam();
+        if (colorAvailable) {
+            randColors();
+            deleteSeam();
+        }
 
 		build = true;
 

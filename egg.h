@@ -15,6 +15,8 @@ private:
     float *** matrix;
     float *** colors;
 
+    bool colorAvailable = false;
+
     bool build = false;
 
 public:

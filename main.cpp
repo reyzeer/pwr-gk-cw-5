@@ -212,7 +212,7 @@ void keys(unsigned char key, int x, int y)
 /// Funkcja ustalająca stan renderowania
 void MyInit(void)
 {
-~
+
     //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     // Kolor czyszcący (wypełnienia okna) ustawiono na czarny
 
