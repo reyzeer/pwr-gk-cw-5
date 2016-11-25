@@ -89,8 +89,8 @@
           <file leaf-file-name="egg.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/egg.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+                <state relative-caret-position="396">
+                  <caret line="61" column="62" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="62" />
                   <folding />
                 </state>
               </provider>
@@ -103,14 +103,14 @@
           <file leaf-file-name="egg.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/egg.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="819">
-                  <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+                <state relative-caret-position="355">
+                  <caret line="376" column="31" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="31" />
                   <folding>
                     <element signature="e#336#472#0" expanded="false" />
                     <element signature="e#474#569#0" expanded="false" />
                     <element signature="e#571#707#0" expanded="false" />
                     <element signature="e#709#1018#0" expanded="false" />
-                    <element signature="e#3117#3860#0" expanded="false" />
+                    <element signature="e#4113#4856#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -372,12 +372,12 @@
       <workItem from="1480019476165" duration="570000" />
       <workItem from="1480066485841" duration="167000" />
       <workItem from="1480066987155" duration="183000" />
-      <workItem from="1480067387138" duration="3185000" />
+      <workItem from="1480067387138" duration="4587000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13852000" />
+    <option name="totallyTimeSpent" value="15254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
@@ -436,7 +436,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,7 +498,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -560,7 +560,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -622,7 +622,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -684,7 +684,7 @@
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -851,22 +851,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/egg.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="61" column="62" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/egg.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+        <state relative-caret-position="355">
+          <caret line="376" column="31" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="31" />
           <folding>
             <element signature="e#336#472#0" expanded="false" />
             <element signature="e#474#569#0" expanded="false" />
             <element signature="e#571#707#0" expanded="false" />
             <element signature="e#709#1018#0" expanded="false" />
-            <element signature="e#3117#3860#0" expanded="false" />
+            <element signature="e#4113#4856#0" expanded="false" />
           </folding>
         </state>
       </provider>

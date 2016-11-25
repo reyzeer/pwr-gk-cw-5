@@ -137,6 +137,27 @@ float Egg::normalVectorCoordinateZ(float u, float v)
 
 }
 
+void Egg::vector4Side(int i, int j, float x, float y, float z)
+{
+	normalVector[i][j][0] = x / sqrt(x * x + y * y + z * z);
+	normalVector[i][j][1] = y / sqrt(x * x + y * y + z * z);
+	normalVector[i][j][2] = z / sqrt(x * x + y * y + z * z);
+}
+
+void Egg::vector4Top(int i, int j, float x, float y, float z)
+{
+	normalVector[i][j][0] = 0;
+	normalVector[i][j][1] = 0;
+	normalVector[i][j][2] = 0;
+}
+
+void Egg::vector4Bottom(int i, int j, float x, float y, float z)
+{
+	normalVector[i][j][0] = 0;
+	normalVector[i][j][1] = -1;
+	normalVector[i][j][2] = 0;
+}
+
 void Egg::generateNormalVector()
 {
 
@@ -145,7 +166,28 @@ void Egg::generateNormalVector()
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 
+			float u = matrix[i][j][0];
+			float v = matrix[i][j][1];
 
+			float x = normalVectorCoordinateX(u, v);
+			float y = normalVectorCoordinateY(u, v);
+			float z = normalVectorCoordinateZ(u, v);
+
+			if (i < n / 2) {
+				vector4Side(i, j, x, y, z);
+			}
+
+			if (i > n / 2) {
+				vector4Side(i, j, x * -1.0, y * -1.0, z * -1.0);
+			}
+
+			if (i == n / 2) {
+				vector4Top(i, j, x, y, z);
+			}
+
+			if (i == n / 2) {
+				vector4Bottom(i, j, x, y, z);
+			}
 
 		}
 	}
@@ -332,6 +374,7 @@ void Egg::draw()
 
 		prepareMatrix();
 		transform2Egg();
+		generateNormalVector();
 
         if (colorAvailable) {
             randColors();
