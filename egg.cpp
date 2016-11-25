@@ -36,7 +36,7 @@ float Egg::z(float u, float v)
 void Egg::transform2Egg()
 {
 
-	float distance = 1.0f / (float) (n - 1);
+	distance = 1.0f / (float) (n - 1);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
@@ -166,20 +166,22 @@ void Egg::generateNormalVector()
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 
-			float u = matrix[i][j][0];
-			float v = matrix[i][j][1];
+			float u = distance * matrix[i][j][0];
+			float v = distance * matrix[i][j][1];
 
 			float x = normalVectorCoordinateX(u, v);
 			float y = normalVectorCoordinateY(u, v);
 			float z = normalVectorCoordinateZ(u, v);
 
+			vector4Side(i, j, x, y, z);
+			/*
 			if (i < n / 2) {
 				vector4Side(i, j, x, y, z);
 			}
 
 			if (i > n / 2) {
 				vector4Side(i, j, x * -1.0, y * -1.0, z * -1.0);
-			}
+			}*/
 
 			if (i == n / 2) {
 				vector4Top(i, j, x, y, z);

@@ -27,6 +27,8 @@ private:
     /// IS egg render
     bool build = false;
 
+    float distance;
+
     /// Generuje "dwu"wymiarową tablicę punktów XYZ
     void prepareMatrix();
 
