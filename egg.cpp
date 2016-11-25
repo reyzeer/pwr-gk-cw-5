@@ -50,6 +50,37 @@ void Egg::transform2Egg()
 
 }
 
+void Egg::prepareNormalVector()
+{
+
+	normalVector = new float ** [n];
+	for (int i = 0; i < n; i++) {
+		normalVector[i] = new float * [n];
+		for (int j = 0; j < n; j++) {
+			normalVector[i][j] = new float [3];
+		}
+	}
+
+}
+
+
+
+void Egg::generateNormalVector()
+{
+
+	prepareNormalVector();
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+
+
+
+		}
+	}
+
+
+}
+
 void Egg::randColors()
 {
 

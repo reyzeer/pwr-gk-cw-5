@@ -12,12 +12,36 @@ class Egg
 
 private:
 
+    /// Points in egg
     float *** matrix;
+
+    /// Colors for all points in egg
     float *** colors;
 
+    /// Normal vectors for all points in egg
+    float *** normalVector;
+
+    /// Generate random color for egg
     bool colorAvailable = false;
 
+    /// IS egg render
     bool build = false;
+
+    /// Generuje "dwu"wymiarową tablicę punktów XYZ
+    void prepareMatrix();
+
+    /// Generate array for normal vector
+    void prepareNormalVector();
+
+    float x(float u, float v);
+    float y(float u, float v);
+    float z(float u, float v);
+
+    void generateNormalVector();
+
+    float normalVectorCoordinateX();
+    float normalVectorCoordinateY();
+    float normalVectorCoordinateZ();
 
 public:
 
@@ -29,12 +53,7 @@ public:
 
     float posX, posY, posZ;
 
-    /// Generuje "dwu"wymiarową tablicę punktów XYZ
-    void prepareMatrix();
 
-    float x(float u, float v);
-    float y(float u, float v);
-    float z(float u, float v);
 
     void transform2Egg();
 
