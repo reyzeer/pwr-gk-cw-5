@@ -354,36 +354,40 @@ void Egg::drawTriangles()
 
 }
 
-void
-
-void Egg::deleteMatrix()
+void Egg::destructDataArray(float ***table)
 {
-
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            delete[] table[i][j];
+        }
+        delete[] table[i];
+    }
+    delete[] table;
 }
 
-void Egg::deleteColors()
+void Egg::destructMatrix()
 {
+    destructDataArray(matrix);
+}
 
+void Egg::destructColors()
+{
+    if (colorAvailable) {
+        destructDataArray(colors);
+    }
+}
+
+void Egg::destructNormalVector()
+{
+    destructDataArray(normalVector);
 }
 
 void Egg::destruct()
 {
 
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			delete[] matrix[i][j];
-		}
-		delete[] matrix[i];
-	}
-	delete[] matrix;
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			delete[] colors[i][j];
-		}
-		delete[] colors[i];
-	}
-	delete[] colors;
+    destructMatrix();
+    destructColors();
+    destructNormalVector();
 
 	build = false;
 

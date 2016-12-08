@@ -90,11 +90,13 @@ private:
     /// \param z normal vectro coordinate z
     void vector4Bottom(int i, int j, float x, float y, float z);
 
-    void destructDataArray();
+    void destructDataArray(float *** table);
 
-    void deleteMatrix();
+    void destructMatrix();
 
-    void deleteColors();
+    void destructColors();
+
+    void destructNormalVector();
 
 public:
 
