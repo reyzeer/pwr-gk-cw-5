@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70e69c2b-66b3-469c-a54a-6525df7cdf1c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egg.cpp" afterPath="$PROJECT_DIR$/egg.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egg.h" afterPath="$PROJECT_DIR$/egg.h" />
     </list>
     <ignored path="jajko.iws" />
@@ -69,8 +68,8 @@
           <file leaf-file-name="egg.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/egg.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="358">
-                  <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+                <state relative-caret-position="394">
+                  <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -127,8 +126,8 @@
         <option value="$PROJECT_DIR$/rdraw.h" />
         <option value="$PROJECT_DIR$/common.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/egg.h" />
         <option value="$PROJECT_DIR$/egg.cpp" />
+        <option value="$PROJECT_DIR$/egg.h" />
       </list>
     </option>
   </component>
@@ -389,7 +388,7 @@
       <workItem from="1480066485841" duration="167000" />
       <workItem from="1480066987155" duration="183000" />
       <workItem from="1480067387138" duration="7909000" />
-      <workItem from="1481222393140" duration="8131000" />
+      <workItem from="1481222393140" duration="8329000" />
     </task>
     <task id="LOCAL-00001" summary="Find source of problem with change n parameter.">
       <created>1481230869131</created>
@@ -405,11 +404,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481232528530</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed destructor">
+      <created>1481233143545</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1481233143545</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26707000" />
+    <option name="totallyTimeSpent" value="26905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1052" extended-state="6" />
@@ -850,18 +856,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/egg.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/egg.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="427" column="25" selection-start-line="427" selection-start-column="25" selection-end-line="427" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/egg.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
           <folding />
         </state>
       </provider>

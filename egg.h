@@ -90,16 +90,21 @@ private:
     /// \param z normal vectro coordinate z
     void vector4Bottom(int i, int j, float x, float y, float z);
 
+    /// Deleted 3D array
     void destructDataArray(float *** table);
 
+    /// Deleted this->matrix
     void destructMatrix();
 
+    /// Deleted this->colors
     void destructColors();
 
+    /// Deleted this->normalVector
     void destructNormalVector();
 
 public:
 
+    /// Deleted all egg matrix from memory
     ~Egg();
 
     int n;
