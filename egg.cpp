@@ -430,3 +430,8 @@ void Egg::draw()
 	}
 
 }
+
+void Egg::~Egg()
+{
+    destruct();
+}

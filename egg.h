@@ -100,6 +100,8 @@ private:
 
 public:
 
+    ~Egg();
+
     int n;
     /// 0 - draw points
     /// 1 - draw lines
