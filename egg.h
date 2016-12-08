@@ -90,6 +90,12 @@ private:
     /// \param z normal vectro coordinate z
     void vector4Bottom(int i, int j, float x, float y, float z);
 
+    void destructDataArray();
+
+    void deleteMatrix();
+
+    void deleteColors();
+
 public:
 
     int n;
@@ -99,8 +105,6 @@ public:
     int renderType;
 
     float posX, posY, posZ;
-
-
 
     void transform2Egg();
 

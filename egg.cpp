@@ -36,12 +36,12 @@ float Egg::z(float u, float v)
 void Egg::transform2Egg()
 {
 
-	distance = 1.0f / (float) (n - 1);
+	distance = 1.0f / ((float)n - 1);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			float u = distance * i;
-			float v = distance * j;
+			float u = distance * (float) i;
+			float v = distance * (float) j;
 			matrix[i][j][0] = x(u, v) - posX;
 			matrix[i][j][1] = y(u, v) - posY;
 			matrix[i][j][2] = z(u, v) - posZ;
@@ -351,6 +351,18 @@ void Egg::drawTriangles()
 	}
 
 	glEnd();
+
+}
+
+void
+
+void Egg::deleteMatrix()
+{
+
+}
+
+void Egg::deleteColors()
+{
 
 }
 
