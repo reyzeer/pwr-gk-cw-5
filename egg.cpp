@@ -431,7 +431,7 @@ void Egg::draw()
 
 }
 
-void Egg::~Egg()
+Egg::~Egg()
 {
     destruct();
 }

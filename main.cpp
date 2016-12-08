@@ -140,12 +140,23 @@ void setViewer()
 void prepareEgg()
 {
 
-    egg.n = 30;
+    egg.n = 29;
     egg.posX = 0.0f;
     egg.posY = 5.0f;
     egg.posZ = 0.0f;
     egg.renderType = 2;
 
+}
+
+void output(int x, int y, float r, float g, float b, char *string)
+{
+    glColor3f( r, g, b );
+    glRasterPos2f(x, y);
+    int len, i;
+    len = (int)strlen(string);
+    for (i = 0; i < len; i++) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, '0');
+    }
 }
 
 /// Funkcja określająca co ma być rysowane (zawsze wywoływana gdy trzeba przerysować scenę)
@@ -162,6 +173,8 @@ void RenderScene(void)
 
     RDraw::Axes();
     egg.draw();
+
+    output(200, 200, 0.0, 1.0, 1.0, "Hello world!");
 
     //glutWireTeapot(3.0); // Narysowanie obrazu czajnika do herbaty
 
@@ -193,14 +206,14 @@ void keys(unsigned char key, int x, int y)
             break;
 
         case '[':
-            if (egg.n > 0) {
+            if (egg.n > 1) {
                 egg.destruct();
-                egg.n--;
+                egg.n -= 2;
             }
             break;
         case ']':
             egg.destruct();
-            egg.n++;
+            egg.n += 2;
             break;
     }
 
@@ -347,7 +360,7 @@ int main(int argc, char **argv)
 
     glutInitWindowSize(450, 450);
 
-    glutCreateWindow("Jajko Cw 4 - Zbigniew Czarnecki 209909");
+    glutCreateWindow("Jajko Cw 5 - Zbigniew Czarnecki 209909");
 
     glutDisplayFunc(RenderScene);
     // Określenie, że funkcja RenderScene będzie funkcją zwrotną

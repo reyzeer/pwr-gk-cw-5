@@ -9,6 +9,7 @@
 #include <cmath>
 #include <chrono>
 #include <iostream>
+#include <cstring>
 
 //Random
 #include <time.h>
