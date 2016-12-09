@@ -52,8 +52,8 @@ Egg egg = Egg();
 ///Promien sfery swiatel
 float lightsR = 10.0;
 
-static GLfloat theta_light[] = {0.0; 0.0}
-static GLfloat phi_light[] = {0.0; 0.0}
+static GLfloat theta_light[] = {0.0, 0.0};
+static GLfloat phi_light[] = {0.0, 0.0};
 
 /// Position of blue light
 GLfloat light_position_blue[] = {0.0, 0.0, 10.0, 1.0};
@@ -63,13 +63,10 @@ GLfloat light_position_red[] = {0.0, 0.0, 10.0, 1.0};
 
 /*************************************************************************************/
 
-/// Move egg
-/// \param btn
-/// \param state
-/// \param x
-/// \param y
-void moveEgg(int btn, int state, int x, int y)
+/// Funkcja "bada" stan myszy i ustawia wartości odpowiednich zmiennych globalnych
+void Mouse(int btn, int state, int x, int y)
 {
+
     if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         // przypisanie aktualnie odczytanej pozycji kursora
         // jako pozycji poprzedniej
@@ -77,27 +74,12 @@ void moveEgg(int btn, int state, int x, int y)
         y_pos_old = y;
         statusKey = 1;          // wcięnięty został lewy klawisz myszy
     } else if (btn == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+        x_pos_old = x;
         y_pos_old = y;        // przypisanie aktualnie odczytanej pozycji kursora
         // jako pozycji poprzedniej
         statusKey = 2;            //wciśnięty został prawy klawisz myszy
     } else {
         statusKey = 0;          // nie został wcięnięty żaden klawisz
-    }
-}
-
-void moveLights(int btn, int state, int x, int y)
-{
-
-}
-
-/// Funkcja "bada" stan myszy i ustawia wartości odpowiednich zmiennych globalnych
-void Mouse(int btn, int state, int x, int y)
-{
-
-    if (!moveEggLights) {
-        moveEgg(btn, state, x, y);
-    } else {
-        moveLights(btn, state, x, y);
     }
 
 }
@@ -159,9 +141,11 @@ void setR()
 void setViewer()
 {
 
-    setTheta();
-    setPhi();
-    setR();
+    if (!moveEggLights) {
+        setTheta();
+        setPhi();
+        setR();
+    }
 
     viewer[0] = r * cos(theta) * cos(phi);
     viewer[1] = r * sin(phi);
@@ -185,23 +169,17 @@ void prepareEgg()
 
 void setThetaLight(int lightNumber)
 {
-    //jeśli lewy klawisz myszy wciśnięty
-    if (statusKey == 1) {
-        theta_light[lightNumber] += delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
-        if (theta_light[lightNumber] >= 360.0) {
-            theta_light[lightNumber] = 0.0;
-        }
+    theta_light[lightNumber] += delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
+    if (theta_light[lightNumber] >= 360.0) {
+        theta_light[lightNumber] = 0.0;
     }
 }
 
 void setPhiLight(int lightNumber)
 {
-    // jeśli lewy klawisz myszy wcięnięty
-    if (statusKey == 1) {
-        phi_light[lightNumber] += delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
-        if (phi_light[lightNumber] >= 360.0) {
-            phi_light[lightNumber] = 0.0;
-        }
+    phi_light[lightNumber] += delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
+    if (phi_light[lightNumber] >= 360.0) {
+        phi_light[lightNumber] = 0.0;
     }
 }
 
@@ -215,14 +193,24 @@ void RenderScene(void)
     glLoadIdentity();
     // Czyszczenie macierzy bieżącej
 
+
     setViewer();
 
     RDraw::Axes();
     egg.draw();
 
-    if (statusKey)
+    if (moveEggLights) {
 
-    GLfloat lights_pos[4] = { 0 };
+        if (statusKey == 1) {
+            setThetaLight(0);
+            setPhiLight(0);
+        } else if (statusKey == 2) {
+            setThetaLight(1);
+            setPhiLight(1);
+        }
+
+    }
+
     light_position_blue[0] = lightsR * cos(theta_light[0]) * cos(phi_light[0]);
     light_position_blue[1] = lightsR * sin(phi_light[0]);
     light_position_blue[2] = lightsR * sin(theta_light[0]) * cos(phi_light[0]);
