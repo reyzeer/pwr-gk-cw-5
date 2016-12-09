@@ -169,7 +169,7 @@ void prepareEgg()
 
 void setThetaLight(int lightNumber)
 {
-    theta_light[lightNumber] += delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
+    theta_light[lightNumber] -= delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
     if (theta_light[lightNumber] >= 360.0) {
         theta_light[lightNumber] = 0.0;
     }
@@ -177,7 +177,7 @@ void setThetaLight(int lightNumber)
 
 void setPhiLight(int lightNumber)
 {
-    phi_light[lightNumber] += delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
+    phi_light[lightNumber] -= delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
     if (phi_light[lightNumber] >= 360.0) {
         phi_light[lightNumber] = 0.0;
     }
