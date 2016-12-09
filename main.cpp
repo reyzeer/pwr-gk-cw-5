@@ -17,7 +17,7 @@ const float MAX_R = 30.0f;
 const float SPEED = 0.1f;
 
 typedef float point3[3];
-static GLfloat viewer[]= {0.0, 0.0, 10.0};
+static GLfloat viewer[] = {0.0, 0.0, 10.0};
 
 static GLfloat theta = 0.0;   // kąt obrotu obiektu
 static GLfloat phi = 0.0;
@@ -31,10 +31,10 @@ static GLfloat pix2angle_y;     // przelicznik pikseli na stopnie
 static GLint statusKey = 0;
 
 /// poprzednia pozycja kursora myszy
-static int x_pos_old=0;
+static int x_pos_old = 0;
 
 /// poprzednia pozycja kursora myszy
-static int y_pos_old=0;
+static int y_pos_old = 0;
 
 /// różnica pomiędzy pozycją bieżącą i poprzednią kursora myszy
 static int delta_x = 0;
@@ -42,27 +42,56 @@ static int delta_x = 0;
 /// różnica pomiędzy pozycją bieżącą i poprzednią kursora myszy
 static int delta_y = 0;
 
+/// false - moving egg
+/// true - moving lights
+bool moveEggLights = false;
+
 /// Obiekt generujący jajko
 Egg egg = Egg();
 
+/// Position of blue light
+GLfloat light_position_blue[] = {0.0, 0.0, 10.0, 1.0};
+
+/// Position of red light
+GLfloat light_position_red[] = {0.0, 0.0, 5.0, 1.0};
+
 /*************************************************************************************/
 
-/// Funkcja "bada" stan myszy i ustawia wartości odpowiednich zmiennych globalnych
-void Mouse(int btn, int state, int x, int y)
+/// Move egg
+/// \param btn
+/// \param state
+/// \param x
+/// \param y
+void moveEgg(int btn, int state, int x, int y)
 {
-
-    if (btn==GLUT_LEFT_BUTTON  && state == GLUT_DOWN) {
+    if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         // przypisanie aktualnie odczytanej pozycji kursora
         // jako pozycji poprzedniej
         x_pos_old = x;
         y_pos_old = y;
         statusKey = 1;          // wcięnięty został lewy klawisz myszy
-    } else if (btn==GLUT_RIGHT_BUTTON  && state == GLUT_DOWN) {
-        y_pos_old = y;		// przypisanie aktualnie odczytanej pozycji kursora
+    } else if (btn == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+        y_pos_old = y;        // przypisanie aktualnie odczytanej pozycji kursora
         // jako pozycji poprzedniej
-        statusKey = 2;			//wciśnięty został prawy klawisz myszy
+        statusKey = 2;            //wciśnięty został prawy klawisz myszy
     } else {
         statusKey = 0;          // nie został wcięnięty żaden klawisz
+    }
+}
+
+void moveLights(int btn, int state, int x, int y)
+{
+
+}
+
+/// Funkcja "bada" stan myszy i ustawia wartości odpowiednich zmiennych globalnych
+void Mouse(int btn, int state, int x, int y)
+{
+
+    if (!moveEggLights) {
+        moveEgg(btn, state, x, y);
+    } else {
+        moveLights(btn, state, x, y);
     }
 
 }
@@ -74,11 +103,11 @@ void Mouse(int btn, int state, int x, int y)
 void Motion( GLsizei x, GLsizei y )
 {
 
-    delta_x=x-x_pos_old;     // obliczenie różnicy położenia kursora myszy
-    delta_y=y-y_pos_old;     // obliczenie różnicy położenia kursora myszy
+    delta_x = x - x_pos_old;     // obliczenie różnicy położenia kursora myszy
+    delta_y = y - y_pos_old;     // obliczenie różnicy położenia kursora myszy
 
-    x_pos_old=x;            // podstawienie bieżącego położenia jako poprzednie
-    y_pos_old=y;            // podstawienie bieżącego położenia jako poprzednie
+    x_pos_old = x;            // podstawienie bieżącego położenia jako poprzednie
+    y_pos_old = y;            // podstawienie bieżącego położenia jako poprzednie
 
     glutPostRedisplay();     // przerysowanie obrazu sceny
 }
@@ -148,17 +177,6 @@ void prepareEgg()
 
 }
 
-void output(int x, int y, float r, float g, float b, char *string)
-{
-    glColor3f( r, g, b );
-    glRasterPos2f(x, y);
-    int len, i;
-    len = (int)strlen(string);
-    for (i = 0; i < len; i++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, '0');
-    }
-}
-
 /// Funkcja określająca co ma być rysowane (zawsze wywoływana gdy trzeba przerysować scenę)
 void RenderScene(void)
 {
@@ -173,8 +191,6 @@ void RenderScene(void)
 
     RDraw::Axes();
     egg.draw();
-
-    output(200, 200, 0.0, 1.0, 1.0, "Hello world!");
 
     //glutWireTeapot(3.0); // Narysowanie obrazu czajnika do herbaty
 
@@ -215,12 +231,110 @@ void keys(unsigned char key, int x, int y)
             egg.destruct();
             egg.n += 2;
             break;
+        case ',':
+            moveEggLights = false;
+            break;
+        case '.':
+            moveEggLights = true;
+            break;
     }
 
     RenderScene(); // przerysowanie obrazu sceny
 }
 
 /*************************************************************************************/
+
+void lightBlue()
+{
+    /*************************************************************************************/
+    // Definicja źródła światła
+
+    //GLfloat light_position_blue[] = {0.0, 0.0, 10.0, 1.0};
+    // położenie źródła
+
+    GLfloat light_ambient[] = {0.1, 0.1, 0.1, 1.0};
+    // składowe intensywności świecenia źródła światła otoczenia
+    // Ia = [Iar,Iag,Iab]
+
+    GLfloat light_diffuse[] = {0.0, 0.0, 1.0, 1.0};
+    // składowe intensywności świecenia źródła światła powodującego
+    // odbicie dyfuzyjne Id = [Idr,Idg,Idb]
+
+    GLfloat light_specular[]= {1.0, 1.0, 1.0, 1.0};
+    // składowe intensywności świecenia źródła światła powodującego
+    // odbicie kierunkowe Is = [Isr,Isg,Isb]
+
+    GLfloat att_constant  = {1.0};
+    // składowa stała ds dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    GLfloat att_linear    = {0.05};
+    // składowa liniowa dl dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    GLfloat att_quadratic  = {0.001};
+    // składowa kwadratowa dq dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    /*************************************************************************************/
+    // Ustawienie parametrów źródła
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position_blue);
+
+    glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, att_constant);
+    glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, att_linear);
+    glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, att_quadratic);
+
+}
+
+void lightRed()
+{
+    /*************************************************************************************/
+    // Definicja źródła światła
+
+    //GLfloat light_position_red[] = {0.0, 0.0, 5.0, 1.0};
+    // położenie źródła
+
+    GLfloat light_ambient[] = {0.1, 0.1, 0.1, 1.0};
+    // składowe intensywności świecenia źródła światła otoczenia
+    // Ia = [Iar,Iag,Iab]
+
+    GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
+    // składowe intensywności świecenia źródła światła powodującego
+    // odbicie dyfuzyjne Id = [Idr,Idg,Idb]
+
+    GLfloat light_specular[]= {1.0, 1.0, 1.0, 1.0};
+    // składowe intensywności świecenia źródła światła powodującego
+    // odbicie kierunkowe Is = [Isr,Isg,Isb]
+
+    GLfloat att_constant  = {1.0};
+    // składowa stała ds dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    GLfloat att_linear    = {0.05};
+    // składowa liniowa dl dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    GLfloat att_quadratic  = {0.001};
+    // składowa kwadratowa dq dla modelu zmian oświetlenia w funkcji
+    // odległości od źródła
+
+    /*************************************************************************************/
+    // Ustawienie parametrów źródła
+
+    glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+    glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular);
+    glLightfv(GL_LIGHT1, GL_POSITION, light_position_red);
+
+    glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, att_constant);
+    glLightf(GL_LIGHT1, GL_LINEAR_ATTENUATION, att_linear);
+    glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, att_quadratic);
+
+}
 
 /// Funkcja ustalająca stan renderowania
 void MyInit(void)
@@ -250,36 +364,6 @@ void MyInit(void)
         // współczynnik n opisujący połysk powierzchni
 
     /*************************************************************************************/
-    // Definicja źródła światła
-
-        GLfloat light_position[] = {0.0, 0.0, 10.0, 1.0};
-        // położenie źródła
-
-        GLfloat light_ambient[] = {0.1, 0.1, 0.1, 1.0};
-        // składowe intensywności świecenia źródła światła otoczenia
-        // Ia = [Iar,Iag,Iab]
-
-        GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
-        // składowe intensywności świecenia źródła światła powodującego
-        // odbicie dyfuzyjne Id = [Idr,Idg,Idb]
-
-        GLfloat light_specular[]= {1.0, 1.0, 1.0, 1.0};
-        // składowe intensywności świecenia źródła światła powodującego
-        // odbicie kierunkowe Is = [Isr,Isg,Isb]
-
-        GLfloat att_constant  = {1.0};
-        // składowa stała ds dla modelu zmian oświetlenia w funkcji
-        // odległości od źródła
-
-        GLfloat att_linear    = {0.05};
-        // składowa liniowa dl dla modelu zmian oświetlenia w funkcji
-        // odległości od źródła
-
-        GLfloat att_quadratic  = {0.001};
-        // składowa kwadratowa dq dla modelu zmian oświetlenia w funkcji
-        // odległości od źródła
-
-    /*************************************************************************************/
     // Ustawienie parametrów materiału i źródła światła
     /*************************************************************************************/
     // Ustawienie patrametrów materiału
@@ -290,16 +374,10 @@ void MyInit(void)
         glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);
 
     /*************************************************************************************/
-    // Ustawienie parametrów źródła
+    // Dodanie ustawienie światła
 
-        glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-        glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-        glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-        glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-
-        glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, att_constant);
-        glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, att_linear);
-        glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, att_quadratic);
+    lightBlue();
+    lightRed();
 
     /*************************************************************************************/
     // Ustawienie opcji systemu oświetlania sceny
@@ -307,6 +385,7 @@ void MyInit(void)
         glShadeModel(GL_SMOOTH); // właczenie łagodnego cieniowania
         glEnable(GL_LIGHTING);   // właczenie systemu oświetlenia sceny
         glEnable(GL_LIGHT0);     // włączenie źródła o numerze 0
+        glEnable(GL_LIGHT1);     // włączenie źródła o numerze 1
         glEnable(GL_DEPTH_TEST); // włączenie mechanizmu z-bufora
 
     /*************************************************************************************/
