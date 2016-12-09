@@ -78,8 +78,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
+            <state relative-caret-position="469">
+              <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -344,7 +344,7 @@
       <workItem from="1480066485841" duration="167000" />
       <workItem from="1480066987155" duration="183000" />
       <workItem from="1480067387138" duration="7909000" />
-      <workItem from="1481222393140" duration="14847000" />
+      <workItem from="1481222393140" duration="15763000" />
     </task>
     <task id="LOCAL-00001" summary="Find source of problem with change n parameter.">
       <created>1481230869131</created>
@@ -381,11 +381,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481241240749</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added second light source.">
+      <created>1481245271576</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1481245271576</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33423000" />
+    <option name="totallyTimeSpent" value="34339000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1052" extended-state="6" />
@@ -427,7 +434,8 @@
     <MESSAGE value="Fixed destructor" />
     <MESSAGE value="Added comment to destruct methods" />
     <MESSAGE value="Correct light" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correct light" />
+    <MESSAGE value="Added second light source." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added second light source." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -861,8 +869,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
+        <state relative-caret-position="469">
+          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
           <folding />
         </state>
       </provider>

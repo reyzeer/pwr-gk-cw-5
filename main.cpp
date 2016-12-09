@@ -49,11 +49,17 @@ bool moveEggLights = false;
 /// Obiekt generujący jajko
 Egg egg = Egg();
 
+///Promien sfery swiatel
+float lightsR = 10.0;
+
+static GLfloat theta_light[] = {0.0; 0.0}
+static GLfloat phi_light[] = {0.0; 0.0}
+
 /// Position of blue light
 GLfloat light_position_blue[] = {0.0, 0.0, 10.0, 1.0};
 
 /// Position of red light
-GLfloat light_position_red[] = {0.0, 0.0, 5.0, 1.0};
+GLfloat light_position_red[] = {0.0, 0.0, 10.0, 1.0};
 
 /*************************************************************************************/
 
@@ -118,7 +124,7 @@ void setTheta()
 {
     //jeśli lewy klawisz myszy wciśnięty
     if (statusKey == 1) {
-        theta += delta_x*pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
+        theta += delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
         if (theta >= 360.0) {
             theta = 0.0;
         }
@@ -129,7 +135,7 @@ void setPhi()
 {
     // jeśli lewy klawisz myszy wcięnięty
     if (statusKey == 1) {
-        phi += delta_y*pix2angle_y;    // do różnicy położeń kursora myszy
+        phi += delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
         if (phi >= 360.0) {
             phi = 0.0;
         }
@@ -177,6 +183,28 @@ void prepareEgg()
 
 }
 
+void setThetaLight(int lightNumber)
+{
+    //jeśli lewy klawisz myszy wciśnięty
+    if (statusKey == 1) {
+        theta_light[lightNumber] += delta_x * pix2angle_x;    // modyfikacja kąta obrotu o kat proporcjonalny
+        if (theta_light[lightNumber] >= 360.0) {
+            theta_light[lightNumber] = 0.0;
+        }
+    }
+}
+
+void setPhiLight(int lightNumber)
+{
+    // jeśli lewy klawisz myszy wcięnięty
+    if (statusKey == 1) {
+        phi_light[lightNumber] += delta_y * pix2angle_y;    // do różnicy położeń kursora myszy
+        if (phi_light[lightNumber] >= 360.0) {
+            phi_light[lightNumber] = 0.0;
+        }
+    }
+}
+
 /// Funkcja określająca co ma być rysowane (zawsze wywoływana gdy trzeba przerysować scenę)
 void RenderScene(void)
 {
@@ -191,6 +219,23 @@ void RenderScene(void)
 
     RDraw::Axes();
     egg.draw();
+
+    if (statusKey)
+
+    GLfloat lights_pos[4] = { 0 };
+    light_position_blue[0] = lightsR * cos(theta_light[0]) * cos(phi_light[0]);
+    light_position_blue[1] = lightsR * sin(phi_light[0]);
+    light_position_blue[2] = lightsR * sin(theta_light[0]) * cos(phi_light[0]);
+    light_position_blue[3] = 1.0;
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position_blue);
+    //Aktualizacja pozycji swiatla 0
+
+    light_position_red[0] = lightsR * cos(theta_light[1]) * cos(phi_light[1]);
+    light_position_red[1] = lightsR * sin(phi_light[1]);
+    light_position_red[2] = lightsR * sin(theta_light[1]) * cos(phi_light[1]);
+    light_position_red[3] = 1.0;
+    glLightfv(GL_LIGHT1, GL_POSITION, light_position_red);
+    //Aktualizacja pozycji swiatla 1
 
     //glutWireTeapot(3.0); // Narysowanie obrazu czajnika do herbaty
 
